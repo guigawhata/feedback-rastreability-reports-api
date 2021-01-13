@@ -9,7 +9,7 @@ async function startServer() {
         return response.json({ message: request.body });
     })
 
-    app.listen(3333, () => {
+    app.listen(process.env.PORT || 3333, () => {
         // eslint-disable-next-line no-console
         console.log('Server started on port 3333!');
     });
