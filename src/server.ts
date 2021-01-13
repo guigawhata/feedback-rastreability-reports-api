@@ -1,13 +1,13 @@
-import express from 'express';
-
-import routes from './routes';
-
-import './utils/database';
+import express, {Request, Response} from 'express';
 
 async function startServer() {
     const app = express();
 
-    app.use(routes);
+    app.get('/', (request: Request, response: Response) => {
+        console.log(request);
+
+        return response.json({ message: request.body });
+    })
 
     app.listen(3333, () => {
         // eslint-disable-next-line no-console
