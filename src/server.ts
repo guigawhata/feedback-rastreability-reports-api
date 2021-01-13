@@ -3,7 +3,7 @@ import express, {Request, Response} from 'express';
 async function startServer() {
     const app = express();
 
-    app.get('/', (request: Request, response: Response) => {
+    app.post('/', (request: Request, response: Response) => {
         console.log(request);
 
         return response.json({ message: request.body });
