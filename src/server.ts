@@ -1,9 +1,11 @@
-import express, {Request, Response} from 'express';
+import express, {json, Request, Response} from 'express';
 
 async function startServer() {
     const app = express();
 
-    app.post('/', (request: Request, response: Response) => {
+    app.use(express.json());
+
+    app.post('/', async (request: Request, response: Response) => {
         console.log(request.body);
 
         return response.json({ message: request.body });
