@@ -4,7 +4,7 @@ async function startServer() {
     const app = express();
 
     app.post('/', (request: Request, response: Response) => {
-        console.log(request);
+        console.log(request.body);
 
         return response.json({ message: request.body });
     })
