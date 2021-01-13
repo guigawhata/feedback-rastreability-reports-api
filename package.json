@@ -16,11 +16,7 @@
     },
     "dependencies": {
         "dotenv": "^8.2.0",
-        "express": "^4.17.1",
-        "sequelize": "^6.3.5",
-        "sql.js": "^1.4.0",
-        "sqlite3": "^5.0.0",
-        "tedious": "^9.2.1",
+        "express": "^4.17.1",  
         "typeorm": "^0.2.29"
     }
 }
