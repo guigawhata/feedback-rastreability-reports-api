@@ -42,14 +42,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 function startServer() {
     return __awaiter(this, void 0, void 0, function () {
-        var app;
+        var app, bodyParser;
+        var _this = this;
         return __generator(this, function (_a) {
             app = express_1.default();
-            app.get('/', function (request, response) {
-                console.log(request);
-                return response.json({ message: request.body });
-            });
-            app.listen(3333, function () {
+            app.use(express_1.default.json());
+            bodyParser = require('body-parser');
+            app.use(bodyParser.json({ limit: '50mb' }));
+            app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+            app.post('/', function (request, response) { return __awaiter(_this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    console.log(request.body);
+                    return [2 /*return*/, response.json({ message: request.body })];
+                });
+            }); });
+            app.listen(process.env.PORT || 3333, function () {
                 // eslint-disable-next-line no-console
                 console.log('Server started on port 3333!');
             });
