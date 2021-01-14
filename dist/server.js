@@ -40,16 +40,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
+var body_parser_1 = __importDefault(require("body-parser"));
 function startServer() {
     return __awaiter(this, void 0, void 0, function () {
-        var app, bodyParser;
+        var app;
         var _this = this;
         return __generator(this, function (_a) {
             app = express_1.default();
             app.use(express_1.default.json());
-            bodyParser = require('body-parser');
-            app.use(bodyParser.json({ limit: '50mb' }));
-            app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+            app.use(body_parser_1.default.json({ limit: '50mb' }));
+            app.use(body_parser_1.default.urlencoded({
+                limit: '100mb',
+                extended: true,
+                parameterLimit: 100000
+            }));
             app.post('/', function (request, response) { return __awaiter(_this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
                     console.log(request.body);
