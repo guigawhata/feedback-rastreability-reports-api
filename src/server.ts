@@ -6,13 +6,9 @@ async function startServer() {
 
     app.use(express.json());
 
-    app.use(bodyParser.json({ limit: '100mb' }));
-    
-    app.use(bodyParser.urlencoded({
-    limit: '100mb',
-    extended: true,
-    parameterLimit: 100000
-    }));
+    app.use(bodyParser.json({limit: '200mb'}));
+    app.use(bodyParser.urlencoded({limit: '200mb', extended: true}));
+    app.use(bodyParser.text({ limit: '200mb' }));
 
     app.post('/', async (request: Request, response: Response) => {
         console.log(request.body);
