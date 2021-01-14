@@ -4,11 +4,11 @@ import bodyParser from 'body-parser'
 async function startServer() {
     const app = express();
 
-    app.use(express.json());
+    app.use(express.json({ limit: '500mb' }));
 
-    app.use(bodyParser.json({limit: '200mb'}));
-    app.use(bodyParser.urlencoded({limit: '200mb', extended: true}));
-    app.use(bodyParser.text({ limit: '200mb' }));
+    app.use(bodyParser.json({limit: '500mb'}));
+    app.use(bodyParser.urlencoded({limit: '500mb', extended: true}));
+    app.use(bodyParser.text({ limit: '500mb' }));
 
     app.post('/', async (request: Request, response: Response) => {
         console.log(request.body);
