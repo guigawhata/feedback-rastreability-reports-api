@@ -40,9 +40,6 @@
       ],
       "@shared/*": [
         "shared/*"
-      ],
-      "@jobs/*": [
-        "jobs/*"
       ]
     },
     "rootDirs": [],

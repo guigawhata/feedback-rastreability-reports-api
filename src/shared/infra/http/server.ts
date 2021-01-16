@@ -1,18 +1,18 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
+
+import uploadConfig from '@config/upload';
 
 import '../typeorm';
+import '@shared/container';
+
+import traceabilitiesRoutes from '@modules/traceabilities/infra/http/routes/rastreabilities.routes';
 
 async function startServer() {
   const app = express();
 
   app.use(express.json());
-
-  app.post('/', async (request: Request, response: Response) => {
-    // eslint-disable-next-line no-console
-    console.log(request.body);
-
-    return response.json({ message: request.body });
-  });
+  app.use('/files', express.static(uploadConfig.tmpFolder));
+  app.use('/traceabilities', traceabilitiesRoutes);
 
   app.listen(process.env.PORT || 3333, () => {
     // eslint-disable-next-line no-console
